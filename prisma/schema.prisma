@@ -1,0 +1,55 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model User {
+    id       String  @id @default(cuid())
+    email    String  @unique @db.VarChar(150)
+    password String  @db.VarChar(150)
+    staff    Staff?
+    client   Client?
+
+    @@map("user")
+}
+
+enum ROLE {
+    OWNER
+    EMPLOYEE
+}
+
+enum GROUP {
+    SCOPED
+    GLOBAL
+}
+
+model Staff {
+    id     String @id @default(cuid())
+    role   ROLE
+    group  GROUP
+    userId String @unique
+    user   User   @relation(fields: [userId], references: [id])
+
+    @@map("staff")
+}
+
+enum GENDER {
+    MALE
+    FEMALE
+}
+
+model Client {
+    id       String @id @default(cuid())
+    fullName String @db.VarChar(200)
+    cpf      String @db.VarChar(11)
+    age      Int    @db.SmallInt
+    gender   GENDER
+    userId   String @unique
+    user     User   @relation(fields: [userId], references: [id])
+
+    @@map("client")
+}

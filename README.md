@@ -1,25 +1,31 @@
-# Next.js + Turbopack
+# Aplicativo Mentallize 🧠
 
-This example allows you to get started with `next dev --turbo` quicky.
+Repositório oficial do aplicativo de psicanálise [mentallize](https://app.mentallize.com).
 
-## Deploy your own
+## ⚙️ Como rodar?
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-turbopack&project-name=with-turbopack&repository-name=with-turbopack)
+> 📌 É necessário que o SO seja uma distribuição Linux
 
-## How to use
+Primeiro tenha certeza de que você tenha docker instalado em sua máquina (use o comando `docker ps` para verificar).
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+### 👨‍💻 **Desenvolvimento**:
 
-```bash
-npx create-next-app --example with-turbopack with-turbopack-app
-```
+- Para subir contâiners, e para contâiners:
 
 ```bash
-yarn create next-app --example with-turbopack with-turbopack-app
+$ make run
+$ make migrate
+
+$ make stop
 ```
+
+### 🚀 **Produção**:
+
+- Para subir contâiners, e para contâiners:
 
 ```bash
-pnpm create next-app --example with-turbopack with-turbopack-app
-```
+$ make deploy
+$ make migrate
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+$ make shutdown
+```
