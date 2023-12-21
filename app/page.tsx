@@ -1,23 +1,17 @@
-import { PrismaClient } from "@prisma/client";
-import { randomUUID } from "crypto";
+import Image from "next/image";
 
 export default async function Page() {
-  const db = new PrismaClient();
-
-  await db.user.create({
-    data: { email: `${randomUUID()}@gmail.com`, password: randomUUID() },
-  });
-  const users = await db.user.findMany();
-
   return (
-    users && (
-      <div>
-        {users.map((user) => (
-          <p>
-            #{user.id}: {user.email}
-          </p>
-        ))}
-      </div>
-    )
+    <main>
+      <section id="landing" className="h-screen">
+        <Image
+          src="/placeholder-23-1.jpeg"
+          alt="Jean Carlo Cardozo"
+          fill
+          sizes="100vw"
+          objectFit="contain"
+        />
+      </section>
+    </main>
   );
 }

@@ -12,7 +12,7 @@ Primeiro tenha certeza de que você tenha docker instalado em sua máquina (use 
 
 - Para subir contâiners, e para contâiners:
 
-```bash
+```sh
 $ make run
 $ make migrate
 
@@ -23,7 +23,7 @@ $ make stop
 
 - Para subir contâiners, e para contâiners:
 
-```bash
+```sh
 $ make deploy
 $ make migrate
 
