@@ -1,4 +1,3 @@
-import { TopbarMobile } from "./(landing)/components/topbar-mobile";
 import "./global.css";
 
 export default function RootLayout({
@@ -8,10 +7,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <TopbarMobile />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
