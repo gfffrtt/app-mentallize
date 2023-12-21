@@ -2,20 +2,32 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { register } from "../../../shared/functions/authentication/register";
 import { isRegisterData } from "../../../(client)/register/types/register-data";
+import {
+  EMAIL_ALREADY_USED,
+  INCORRECT_EMAIL,
+  SUCCESS,
+} from "../../../shared/functions/authentication/errors";
 
 export const POST = async (req: NextRequest) => {
   const registerData = await req.json();
-  if (!isRegisterData(registerData)) return NextResponse.json({ status: 422 });
-  try {
-    register(
-      registerData.email,
-      registerData.password,
-      registerData.fullName,
-      registerData.ddd,
-      registerData.number
+  if (!isRegisterData(registerData))
+    return NextResponse.json(
+      { error: "UNPROCESSABLE ENTITY" },
+      { status: 422 }
     );
-    return NextResponse.json({ message: "SUCCESS" }, { status: 200 });
-  } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+
+  const result = await register(
+    registerData.email,
+    registerData.password,
+    registerData.fullName,
+    registerData.ddd,
+    registerData.number
+  );
+  switch (true) {
+    case result === SUCCESS:
+      return NextResponse.json({ message: result }, { status: 200 });
+    case result === EMAIL_ALREADY_USED:
+    case result === INCORRECT_EMAIL:
+      return NextResponse.json({ error: result }, { status: 500 });
   }
 };

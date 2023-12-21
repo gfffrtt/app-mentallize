@@ -2,12 +2,9 @@
 
 import { db } from "../../database/connection";
 import { hashSync } from "bcrypt";
-import { ALREADY_USED_EMAIL, INCORRECT_EMAIL } from "./errors";
+import { EMAIL_ALREADY_USED, INCORRECT_EMAIL, SUCCESS } from "./errors";
 import { signToken } from "./jwt";
 import { createCookie } from "./cookie";
-
-export const EMAIL_REGEX =
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 
 export const register = async (
   email: string,
@@ -15,10 +12,15 @@ export const register = async (
   fullName: string,
   ddd: string,
   number: string
-) => {
-  if (!EMAIL_REGEX.test(email)) throw new Error(INCORRECT_EMAIL);
+): Promise<
+  typeof INCORRECT_EMAIL | typeof EMAIL_ALREADY_USED | typeof SUCCESS
+> => {
+  const EMAIL_REGEX =
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+  if (!EMAIL_REGEX.test(email)) return INCORRECT_EMAIL;
   const possibleUser = await db.user.findFirst({ where: { email } });
-  if (possibleUser) throw new Error(ALREADY_USED_EMAIL);
+  if (possibleUser) return EMAIL_ALREADY_USED;
   const user = await db.user.create({
     data: {
       email,
@@ -38,7 +40,10 @@ export const register = async (
       },
     },
   });
-  const session = await db.session.create({ data: { userId: user.id } });
+  const session = await db.session.create({
+    data: { role: "CLIENT", userId: user.id },
+  });
   const token = signToken({ id: session.id });
   createCookie(token);
+  return SUCCESS;
 };

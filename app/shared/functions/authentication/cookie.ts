@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { UNAUTHORIZED } from "./errors";
 import { tokenPayload } from "./jwt";
 
-export const AUTH_COOKIE = "auth";
+const AUTH_COOKIE = "auth";
 
 export const createCookie = (token: string) => {
   const cookie = cookies();

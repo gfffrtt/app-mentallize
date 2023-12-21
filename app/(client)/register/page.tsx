@@ -1,21 +1,12 @@
-"use client";
-
-import Link from "next/link";
-import { Input } from "../../shared/components/input";
 import Image from "next/image";
 import { FaAngleDown } from "react-icons/fa";
-import { RegisterData } from "./types/register-data";
-import { useState } from "react";
-import { registerClient } from "./functions/register";
+import { RegisterForm } from "./components/register-form";
+import { getCurrentUserClient } from "../../shared/functions/authentication/session";
+import { redirect } from "next/navigation";
 
-export default function Page() {
-  const [registerData, setRegisterData] = useState<RegisterData>({
-    ddd: "",
-    email: "",
-    fullName: "",
-    number: "",
-    password: "",
-  });
+export default async function Page() {
+  const user = getCurrentUserClient();
+  if (typeof user !== "string") redirect("/client");
 
   return (
     <section id="register-page" className="flex flex-col">
@@ -43,35 +34,7 @@ export default function Page() {
           <FaAngleDown className="relative -top-2 text-[#D9B895]" size={30} />
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center w-screen h-screen">
-        <h1 className="relative font-bold text-4xl bg-white top-5 px-2 text-[#D9B895]">
-          Crie sua conta
-        </h1>
-        <form
-          onSubmit={(e) => registerClient(e, registerData)}
-          className="flex flex-col justify-center items-center gap-y-[1.6rem] px-5 rounded-md pt-16 border shadow-xl shadow-[#414042]/50"
-        >
-          <Input title="Nome:" className="w-full" required />
-          <Input title="Email:" className="w-full" required />
-          <div className="flex flex-row gap-x-[1.5rem] items-center">
-            <Input title="DDD:" className="max-w-[6ch]" required />
-            <Input title="Telefone:" required />
-          </div>
-          <Input title="Senha:" type="password" className="w-full" required />
-          <button
-            className="bg-[#534559] inline-flex items-center h-10 py-1 px-3 gap-2 justify-center rounded-md text-text-lg font-medium transition-colors  text-white hover:bg-[#816F86] focus:ring-2 focus:ring-[#816F86] focus:ring-offset-2"
-            type="submit"
-          >
-            Criar conta
-          </button>
-          <Link
-            href="/login"
-            className="relative h-min font-medium text-[#414042]"
-          >
-            Já tem uma conta? Faça login
-          </Link>
-        </form>
-      </div>
+      <RegisterForm />
     </section>
   );
 }

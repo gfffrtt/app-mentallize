@@ -1,11 +1,8 @@
 import { NextResponse } from "next/server";
 import { signOut } from "../../../shared/functions/authentication/signOut";
+import { SUCCESS } from "../../../shared/functions/authentication/errors";
 
 export const DELETE = async () => {
-  try {
-    signOut();
-    return NextResponse.json({ message: "SUCCESS" }, { status: 200 });
-  } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
-  }
+  signOut();
+  return NextResponse.json({ message: SUCCESS }, { status: 200 });
 };
