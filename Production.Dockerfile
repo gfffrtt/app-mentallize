@@ -16,6 +16,8 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 ENV DATABASE_URL postgresql://root:root@localhost:5432/app-mentallize?schema=public
+ENV JWT_SECRET qDTUQxBxh9lXRzB8zzXUSA==
+ENV BASE_URL http://app.mentallize.com
 
 RUN bun run db:generate
 RUN bun run build

@@ -26,7 +26,7 @@ export const Tests = () => {
         </div>
       </div>
       <div className="bg-gradient-to-br from-[#f3e8dd] to-[#E2C7AB] mx-[20px] my-[20px] shadow-2xl shadow-[#414042] relative min-h-[150px] rounded-md p-1">
-        <div className="bg-gradient-to-br from-[#f3e8dd] to-[#EFDFCF]relative max-h-[150px] rounded-md py-4 px-3 flex justify-center items-center">
+        <div className="bg-gradient-to-br from-[#f3e8dd] to-[#EFDFCF] relative max-h-[150px] rounded-md py-4 px-3 flex justify-center items-center">
           <GiUnbalanced size={130} className="mr-4" />
           <div className="relative h-full w-full">
             <h1 className="text-lg font-extrabold w-full">
@@ -45,7 +45,7 @@ export const Tests = () => {
         </div>
       </div>
       <div className="bg-gradient-to-br from-[#f3e8dd] to-[#E2C7AB] mx-[20px] my-[20px] shadow-2xl shadow-[#414042] relative min-h-[150px] rounded-md p-1">
-        <div className="bg-gradient-to-br from-[#f3e8dd] to-[#EFDFCF]relative max-h-[150px] rounded-md py-4 px-3 flex justify-center items-center">
+        <div className="bg-gradient-to-br from-[#f3e8dd] to-[#EFDFCF] relative max-h-[150px] rounded-md py-4 px-3 flex justify-center items-center">
           <GiLovers size={130} className="mr-4" />
           <div className="relative h-full w-full">
             <h1 className="text-lg font-extrabold w-full leading-[1.2rem]">
@@ -64,7 +64,7 @@ export const Tests = () => {
         </div>
       </div>
       <div className="bg-gradient-to-br from-[#f3e8dd] to-[#E2C7AB] mx-[20px] my-[20px] shadow-2xl shadow-[#414042] relative min-h-[150px] rounded-md p-1">
-        <div className="bg-gradient-to-br from-[#f3e8dd] to-[#EFDFCF]relative max-h-[150px] rounded-md py-4 px-3 flex justify-center items-center">
+        <div className="bg-gradient-to-br from-[#f3e8dd] to-[#EFDFCF] relative max-h-[150px] rounded-md py-4 px-3 flex justify-center items-center">
           <TbDirections size={130} className="mr-4" />
           <div className="relative h-full w-full">
             <h1 className="text-lg font-extrabold w-full leading-[1.2rem]">

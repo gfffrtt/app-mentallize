@@ -12,6 +12,8 @@ COPY . .
 
 ENV DATABASE_URL postgresql://root:root@app-mentallize-db-1:5432/app-mentallize?schema=public
 ENV NODE_ENV development
+ENV JWT_SECRET qDTUQxBxh9lXRzB8zzXUSA==
+ENV BASE_URL http://localhost:3000
 
 RUN bun db:generate
 

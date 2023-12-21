@@ -8,12 +8,10 @@ generator client {
 }
 
 model Session {
-    id        String @id @default(cuid())
-    authToken String @db.Text
-    clinicId  String @map("clinic_id")
-    userId    String @unique @map("user_id")
-    clinic    Clinic @relation(fields: [clinicId], references: [id])
-    user      User   @relation(fields: [userId], references: [id])
+    id     String @id @default(cuid())
+    role   ROLE
+    userId String @unique @map("user_id")
+    user   User   @relation(fields: [userId], references: [id])
 }
 
 model User {
@@ -68,9 +66,9 @@ model ClientAddress {
 model Client {
     id              String            @id @default(cuid())
     fullName        String            @db.VarChar(200)
-    cpf             String            @db.VarChar(11)
-    age             Int               @db.SmallInt
-    gender          GENDER
+    cpf             String?           @db.VarChar(11)
+    age             Int?              @db.SmallInt
+    gender          GENDER?
     userId          String            @unique @map("user_id")
     user            User              @relation(fields: [userId], references: [id])
     clientCellphone ClientCellphone[]
@@ -113,7 +111,6 @@ model Clinic {
     clientClinic    ClientClinic[]
     staffClinic     StaffClinic[]
     key             Key[]
-    session         Session[]
 
     @@map("clinic")
 }

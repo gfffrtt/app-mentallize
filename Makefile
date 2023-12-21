@@ -18,3 +18,6 @@ generate:
 
 migrate:
 	sudo docker exec -it app-mentallize-app-1 bun db:push
+
+logs:
+	sudo docker compose -f docker-compose.development.yaml logs app
