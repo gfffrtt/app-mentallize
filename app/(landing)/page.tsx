@@ -4,10 +4,10 @@ import { Mobile } from "./_components/mobile/mobile";
 export default async function Page() {
   return (
     <main>
-      <div className="xl:hidden flex">
+      <div className="sm:hidden flex">
         <Mobile />
       </div>
-      <div className="xl:flex hidden">
+      <div className="sm:flex hidden">
         <Default />
       </div>
     </main>

@@ -1,9 +1,9 @@
-import { Hero } from "./hero";
+import { Landing } from "./landing";
 
 export const Default = () => {
   return (
     <section id="landing" className="h-screen">
-      <Hero />
+      <Landing />
     </section>
   );
 };

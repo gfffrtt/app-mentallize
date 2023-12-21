@@ -1,9 +1,15 @@
-import { Hero } from "./hero";
+import { Landing } from "./landing";
+import { Tests } from "./tests";
 
 export const Mobile = () => {
   return (
-    <section id="landing" className="h-screen">
-      <Hero />
-    </section>
+    <div className="flex flex-col">
+      <section id="landing" className="h-screen">
+        <Landing />
+      </section>
+      <section id="tests" className="h-screen">
+        <Tests />
+      </section>
+    </div>
   );
 };
