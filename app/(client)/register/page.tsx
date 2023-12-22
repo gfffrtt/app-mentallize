@@ -5,7 +5,7 @@ import { getCurrentUserClient } from "../../shared/functions/authentication/sess
 import { redirect } from "next/navigation";
 
 export default async function Page() {
-  const user = getCurrentUserClient();
+  const user = await getCurrentUserClient();
   if (typeof user !== "string") redirect("/client");
 
   return (
@@ -17,7 +17,7 @@ export default async function Page() {
         objectFit="cover"
       />
       <div className="relative h-screen w-screen bg-gradient-to-t from-[#534559]/90 via-black/30 to-transparent"></div>
-      <div className="font-bold h-screen w-screen text-center inset-y-[70%] absolute">
+      <div className="font-bold h-screen w-screen text-center inset-y-[47%] absolute">
         <h1 className="relative bg-gradient-to-t from-[#D1AA80] via-[#D1AA80] to-[#E2C7AB] inline-block text-transparent bg-clip-text text-[50px]">
           PRIMEIRA VEZ?
         </h1>
@@ -28,13 +28,18 @@ export default async function Page() {
           site é para você;
         </p>
         <div className="flex flex-col justify-center items-center">
-          <button className="relative text-[19px] bg-gradient-to-t from-[#D1AA80] via-[#D1AA80] to-[#D9B895] inline-block text-transparent bg-clip-text">
+          <a
+            href="#registerform"
+            className="relative text-[19px] bg-gradient-to-t from-[#D1AA80] via-[#D1AA80] to-[#D9B895] inline-block text-transparent bg-clip-text"
+          >
             Registre-se
-          </button>
+          </a>
           <FaAngleDown className="relative -top-2 text-[#D9B895]" size={30} />
         </div>
       </div>
-      <RegisterForm />
+      <section id="registerform">
+        <RegisterForm />
+      </section>
     </section>
   );
 }

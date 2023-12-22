@@ -3,15 +3,15 @@ import { FaAngleDown } from "react-icons/fa";
 
 export const Landing = () => {
   return (
-    <div className="relative h-screen w-screen">
+    <div className="relative w-screen">
       <Image
-        src="/2.jpeg"
+        src="/3.jpeg"
         alt="Jean Carlo Cardozo"
         layout="fill"
         objectFit="cover"
       />
       <div className="relative h-screen w-screen bg-gradient-to-t from-[#534559] via-black/30 to-transparent"></div>
-      <div className="font-bold h-screen w-screen text-center inset-y-[70%] absolute">
+      <div className="font-bold w-screen text-center inset-y-[65%] absolute">
         <h1 className="relative bg-gradient-to-t from-[#D1AA80] via-[#D1AA80] to-[#E2C7AB] inline-block text-transparent bg-clip-text text-[50px]">
           A REVELAÇÃO
         </h1>
@@ -21,9 +21,12 @@ export const Landing = () => {
           <strong className="underline decoration-wavy">transformação.</strong>
         </p>
         <div className="flex flex-col justify-center items-center">
-          <button className="relative text-[19px] bg-gradient-to-t from-[#D1AA80] via-[#D1AA80] to-[#D9B895] inline-block text-transparent bg-clip-text">
+          <a
+            href="#tests"
+            className="relative text-[19px] bg-gradient-to-t from-[#D1AA80] via-[#D1AA80] to-[#D9B895] inline-block text-transparent bg-clip-text"
+          >
             Conheça nosso método
-          </button>
+          </a>
           <FaAngleDown className="relative -top-2 text-[#D9B895]" size={30} />
         </div>
       </div>

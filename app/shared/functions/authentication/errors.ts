@@ -4,3 +4,4 @@ export const INCORRECT_EMAIL = "Email não segue o padrão";
 export const INCORRECT_PASSWORD = "Senha errada, tente novamente";
 export const INVALID_COOKIE = "Cookie inválido";
 export const SUCCESS = "Sucesso";
+export const NOT_AN_ADMIN = "Você não é um administrador";

@@ -1,11 +1,11 @@
 import React, { MouseEvent } from "react";
-import { LoginData } from "../types/login-data";
-import { api } from "../../../shared/functions/api/axios";
+import { AdminLoginData } from "../types/login-data";
+import { api } from "../../../../shared/functions/api/axios";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
-export const loginClient = async (
+export const loginAdmin = async (
   e: MouseEvent<HTMLButtonElement>,
-  loginData: LoginData,
+  loginData: AdminLoginData,
   setError: React.Dispatch<React.SetStateAction<string>>,
   router: AppRouterInstance
 ) => {
@@ -14,7 +14,7 @@ export const loginClient = async (
     .post("/api/auth/login", loginData)
     .then((response) => {
       if (response.status === 200) {
-        router.push("/staff/clinics");
+        router.push("/client");
       }
     })
     .catch((error) => {

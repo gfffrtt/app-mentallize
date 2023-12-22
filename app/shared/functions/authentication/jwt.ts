@@ -10,6 +10,6 @@ export const signToken = (payload: JwtPayload) => {
 
 export const tokenPayload = (token: string) => {
   const payload = verify(token, process.env.JWT_SECRET);
-  if (!isJwtPayload(payload)) throw new Error(INVALID_COOKIE);
+  if (!isJwtPayload(payload)) return INVALID_COOKIE;
   return payload;
 };

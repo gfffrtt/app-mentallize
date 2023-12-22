@@ -74,6 +74,7 @@ model Client {
     clientCellphone ClientCellphone?
     clientAddress   ClientAddress?
     clientClinic    ClientClinic[]
+    key             Key[]
 
     @@map("client")
 }
@@ -143,12 +144,14 @@ model Key {
     testTaken     Boolean        @map("test_taken")
     createdAt     DateTime       @default(now()) @map("created_at")
     expiresAt     DateTime       @map("expires_at")
+    client        Client         @relation(fields: [clientId], references: [id])
     clinic        Clinic         @relation(fields: [clinicId], references: [id])
     clinicId      String         @map("clinic_id")
     fourElements  FourElements?
     circleOfLife  CircleOfLife?
     loveLanguage  LoveLanguage?
     selfKnowledge SelfKnowledge?
+    clientId      String
 
     @@map("key")
 }

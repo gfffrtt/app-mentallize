@@ -22,7 +22,7 @@ export const deleteCookie = () => {
 
 export const getSessionId = () => {
   const cookie = cookies();
-  if (!cookie.get(AUTH_COOKIE)) throw new Error(UNAUTHORIZED);
+  if (!cookie.get(AUTH_COOKIE)) return UNAUTHORIZED;
   const { value: token } = cookie.get(AUTH_COOKIE);
   return tokenPayload(token);
 };

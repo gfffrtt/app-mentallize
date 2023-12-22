@@ -43,7 +43,7 @@ export const register = async (
   const session = await db.session.create({
     data: { role: "CLIENT", userId: user.id },
   });
-  const token = signToken({ id: session.id });
+  const token = signToken({ id: session.id, role: session.role });
   createCookie(token);
   return SUCCESS;
 };

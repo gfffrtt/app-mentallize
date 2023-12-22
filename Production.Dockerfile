@@ -15,9 +15,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-ENV DATABASE_URL postgresql://root:root@localhost:5432/app-mentallize?schema=public
+ENV DATABASE_URL postgresql://root:root@app-mentallize-db-1:5432/app-mentallize?schema=public
 ENV JWT_SECRET qDTUQxBxh9lXRzB8zzXUSA==
-ENV BASE_URL http://app.mentallize.com
+ENV BASE_URL http://localhost:3000
 
 RUN bun run db:generate
 RUN bun run build
@@ -28,16 +28,16 @@ WORKDIR /app
 
 ENV NODE_ENV production
 
-RUN addgroup --system --gid 1001 nodejs
+RUN addgroup --system --gid 1001 bunjs
 RUN adduser --system --uid 1001 nextjs
 
 COPY --from=builder /app/public ./public
 
 RUN mkdir .next
-RUN chown nextjs:nodejs .next
+RUN chown nextjs:bunjs .next
 
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:bunjs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:bunjs /app/.next/static ./.next/static
 
 USER nextjs
 

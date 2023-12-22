@@ -21,3 +21,6 @@ migrate:
 
 logs:
 	sudo docker compose -f docker-compose.development.yaml logs app
+
+studio:
+	sudo docker exec -it app-mentallize-app-1 bunx prisma studio
