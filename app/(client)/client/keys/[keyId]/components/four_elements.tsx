@@ -313,12 +313,14 @@ function MbtiWords({
     "air"
   );
 
+  const [error, setError] = useState<string>("");
+
   const [weight, setWeight] = useState<{
     air: string;
     water: string;
     earth: string;
     fire: string;
-  }>({ air: "0", water: "10", earth: "0", fire: "0" });
+  }>({ air: "0", water: "0", earth: "0", fire: "0" });
 
   const handleNext = () => {
     if (
@@ -337,11 +339,20 @@ function MbtiWords({
         airWeight: values.airWeight + parseInt(weight.air),
       });
       setStep(step + 1);
+      return;
     }
+    setError("Por favor preenchas as palavras corretamente");
   };
 
   return (
     <main className="pt-6">
+      <div className="flex flex-col w-screen text-center">
+        {error && (
+          <div className="text-red-600 text-center ring-2 ring-offset-2 ring-red-600 rounded-md mb-4">
+            {error}
+          </div>
+        )}
+      </div>
       <div className="flex flex-col gap-y-6 justify-center items-center">
         <div
           className={

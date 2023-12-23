@@ -3,10 +3,6 @@ import { Air } from "./elements/air";
 import { Earth } from "./elements/earth";
 import { Fire } from "./elements/fire";
 import { Water } from "./elements/water";
-import { FaList } from "react-icons/fa6";
-import { MdChecklist } from "react-icons/md";
-import { RiEmotionHappyLine } from "react-icons/ri";
-import { FaRegQuestionCircle } from "react-icons/fa";
 
 type Props = {
   result: {
@@ -23,12 +19,12 @@ type Props = {
 
 export const MbtiResultShow = ({ result }: Props) => {
   return (
-    <div className="h-full flex flex-col sm:w-full w-screen text-lg px-10 pt-12 pb-12">
+    <div className="h-full flex flex-col sm:w-full w-screen text-lg px-10 pt-12 pb-12 sm:px-[250px]">
       <div className="flex flex-col gap-y-6 mb-6">
-        <h1 className="text-4xl mb-4 bg-gradient-to-t from-[#D1AA80] via-[#D1AA80] to-[#E2C7AB] inline-block text-transparent bg-clip-text">
+        <h1 className="text-4xl sm:text-8xl mb-4 bg-gradient-to-t from-[#D1AA80] via-[#D1AA80] to-[#E2C7AB] inline-block text-transparent bg-clip-text">
           Olá {MAP[result.first]}:{" "}
         </h1>
-        <p>
+        <p className="sm:text-2xl">
           Antes de mais nada quero reforçar que este resultado de análise de
           perfil comportamental de preferência não deve servir para você se
           desmotivar ou duvidar de suas capacidades. O que vou revelar sobre
@@ -43,7 +39,7 @@ export const MbtiResultShow = ({ result }: Props) => {
       {result.first === "FI" && <Fire />}
       {result.first === "WA" && <Water />}
       <div className="flex flex-col gap-y-6">
-        <p>
+        <p className="sm:text-2xl">
           Ao ler até aqui muita coisa bateu com você outras já não tanto e sabe
           porquê? Bom {MAP[result.first]}! É que ninguém é 100% de um só perfil
           então não são todas as características que estão somente nesta
@@ -56,30 +52,30 @@ export const MbtiResultShow = ({ result }: Props) => {
           mergulhar cada vez mais neste mundo de Inteligência Emocional
           Psicanalítica.
         </p>
-        <h1 className="text-4xl mb-4 bg-gradient-to-t from-[#D1AA80] via-[#D1AA80] to-[#E2C7AB] inline-block text-transparent bg-clip-text">
+        <h1 className="text-4xl sm:text-8xl mb-4 text-center bg-gradient-to-t from-[#D1AA80] via-[#D1AA80] to-[#E2C7AB] inline-block text-transparent bg-clip-text">
           Próximas etapas:
         </h1>
         <div className="flex flex-col gap-y-3">
-          <h1 className="flex flex-row gap-x-2 items-center">
-            Principais pontos fortes.
+          <h1 className="flex text-2xl flex-row gap-x-2 items-center">
+            • Principais pontos fortes.
           </h1>
-          <h1 className="flex flex-row gap-x-2 items-center">
-            Principais pontos fracos ou curvas escuras emocionais.
+          <h1 className="flex text-2xl flex-row gap-x-2 items-center">
+            • Principais pontos fracos ou curvas escuras emocionais.
           </h1>
-          <h1 className="flex flex-row gap-x-2 items-center">
-            Principais pontos de motivação diaria e como potencializar isso.
+          <h1 className="flex text-2xl flex-row gap-x-2 items-center">
+            • Principais pontos de motivação diaria e como potencializar isso.
           </h1>
-          <h1 className="flex flex-row gap-x-2 items-center">
-            Como escolher preferências de uma melhor forma em seus habitos.
+          <h1 className="flex text-2xl flex-row gap-x-2 items-center">
+            • Como escolher preferências de uma melhor forma em seus habitos.
           </h1>
         </div>
-        <p>
+        <p className="sm:text-2xl">
           Então {MAP[result.first]} este é um dos 4 testes comportamentais que
           você irá realizar, em modelo Assesment, imagine decifrar como você
           percebe o amor de sua familia viver estas experiências sempre!
           Parabéns pelo primeiro passo eu e minha equipe te aguardamos.
         </p>
-        <p className="font-extrabold">
+        <p className="sm:text-2xl font-extrabold">
           Caso você tenha percebido neste pré relatório de devolutiva 0,0% de
           caracteristicas de você, não fique triste realizaremos outro teste com
           você em nossa clínica sem custo algum, apenas para asegurarmos a você

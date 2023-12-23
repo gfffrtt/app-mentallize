@@ -260,7 +260,7 @@ export const FourElementsDefault = ({
   const [step, setStep] = useState<number>(0);
 
   return (
-    <div className="min-h-screen h-full">
+    <div className="min-h-screen h-full w-full">
       <Button
         onClick={(e) => {
           e.preventDefault();
@@ -268,7 +268,7 @@ export const FourElementsDefault = ({
         }}
         Icon={BiLogOutCircle}
         variant="outline"
-        className="relative mt-[80px] -left-[30%]"
+        className="ml-[40px] mt-[80px]"
       >
         Sair
       </Button>
@@ -313,6 +313,8 @@ function MbtiWords({
     "air"
   );
 
+  const [error, setError] = useState<string>("");
+
   const [weight, setWeight] = useState<{
     air: string;
     water: string;
@@ -337,11 +339,20 @@ function MbtiWords({
         airWeight: values.airWeight + parseInt(weight.air),
       });
       setStep(step + 1);
+      return;
     }
+    setError("Por favor preenchas as palavras corretamente");
   };
 
   return (
     <main className="min-h-screen h-full pt-12 w-full mx-auto">
+      <div className="flex flex-col w-full text-center mb-6">
+        {error && (
+          <div className="text-red-600 text-center ring-2 ring-offset-2 ring-red-600 rounded-md mb-4">
+            {error}
+          </div>
+        )}
+      </div>
       <div className="w-full grid grid-cols-2 gap-x-24 gap-y-16">
         <div
           className={
@@ -509,7 +520,7 @@ function MbtiSections({
 
 const Helper = ({ step, setStep }: HelperProps) => {
   return (
-    <div className="relative -top-[10%] mx-36 min-h-screen h-full w-[70%] flex flex-col justify-center items-center gap-y-12">
+    <div className="relative mx-36 h-full -top-12 w-[70%] flex flex-col justify-center items-center gap-y-12">
       <div className="flex flex-col items-center justify-center">
         <h1 className="mb-14 text-6xl text-[#bfa15e]">COMO FUNCIONA</h1>
         <p className="font-semibold text-lg">
