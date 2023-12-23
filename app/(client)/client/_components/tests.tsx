@@ -37,7 +37,7 @@ export const Tests = async ({ user }: TestsProps) => {
               <div
                 onClick={() => redirect(`/client/test?key=${result.id}`)}
                 key={i}
-                className="group ring-2 ring-[#534559] hover:ring-[#BB926B] ring-offset-2 rounded-md p-2 hover:shadow-2xl hover:scale-105 duration-300 ease-in-out"
+                className="group ring-2 ring-[#534559] hover:ring-[#D1AA80] ring-offset-2 rounded-md p-2 hover:shadow-2xl hover:scale-105 duration-300 ease-in-out"
               >
                 Hi
               </div>

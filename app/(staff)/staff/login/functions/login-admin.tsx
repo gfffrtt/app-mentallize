@@ -11,7 +11,7 @@ export const loginAdmin = async (
 ) => {
   e.preventDefault();
   api
-    .post("/api/auth/login", loginData)
+    .post("/api/auth/admin-login", loginData)
     .then((response) => {
       if (response.status === 200) {
         router.push("/client");

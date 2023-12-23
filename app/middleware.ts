@@ -5,6 +5,8 @@ import { tokenPayload } from "./shared/functions/authentication/jwt";
 import { isJwtPayload } from "./shared/types/jwt-payload";
 
 export function middleware(request: NextRequest) {
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-url", request.url);
   if (
     request.nextUrl.pathname.startsWith("/client") ||
     request.nextUrl.pathname.startsWith("/staff")
@@ -20,7 +22,11 @@ export function middleware(request: NextRequest) {
     )
       return NextResponse.redirect("/");
   }
-  return NextResponse.next();
+  return NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  });
 }
 
 export const config = {

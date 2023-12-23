@@ -3,6 +3,7 @@ import { cn } from "../functions/styling/cn";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   title: string;
+  inputClassName?: string;
 }
 
 export const Input = ({
@@ -11,6 +12,8 @@ export const Input = ({
   onChange,
   value,
   className,
+  placeholder,
+  inputClassName,
 }: InputProps) => {
   return (
     <div className={cn("text-[#414042] relative text-sm", className)}>
@@ -18,10 +21,14 @@ export const Input = ({
         {title}
       </h1>
       <input
+        placeholder={placeholder}
         type={type}
         onChange={onChange}
         value={value}
-        className="flex w-full items-center justify-center outline-none rounded-md text-lg font-medium ring-2 ring-[#534559] ring-offset-2"
+        className={cn(
+          "flex w-full items-center justify-center outline-none rounded-md text-lg font-medium ring-2 ring-[#534559] ring-offset-2",
+          inputClassName
+        )}
       />
     </div>
   );

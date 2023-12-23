@@ -11,7 +11,7 @@ model Session {
     id     String @id @default(cuid())
     role   ROLE
     userId String @unique @map("user_id")
-    user   User   @relation(fields: [userId], references: [id])
+    user   User   @relation(onDelete: Cascade, fields: [userId], references: [id])
 }
 
 model User {
@@ -30,7 +30,7 @@ model Staff {
     id          String        @id @default(cuid())
     group       GROUP
     role        STAFF_ROLE
-    user        User          @relation(fields: [userId], references: [id])
+    user        User          @relation(onDelete: Cascade, fields: [userId], references: [id])
     userId      String        @unique @map("user_id")
     staffClinic StaffClinic[]
 
@@ -43,7 +43,7 @@ model ClientCellphone {
     ddd      String         @db.VarChar(2)
     number   String         @db.VarChar(10)
     type     CELLPHONE_TYPE
-    client   Client         @relation(fields: [clientId], references: [id])
+    client   Client         @relation(onDelete: Cascade, fields: [clientId], references: [id])
     clientId String         @unique @map("client_id")
 
     @@map("client_cellphone")
@@ -57,7 +57,7 @@ model ClientAddress {
     neighboorhood String @db.VarChar(150)
     city          String @db.VarChar(150)
     state         STATE
-    client        Client @relation(fields: [clientId], references: [id])
+    client        Client @relation(onDelete: Cascade, fields: [clientId], references: [id])
     clientId      String @unique @map("client_id")
 
     @@map("client_address")
@@ -70,7 +70,7 @@ model Client {
     age             Int?             @db.SmallInt
     gender          GENDER?
     userId          String           @unique @map("user_id")
-    user            User             @relation(fields: [userId], references: [id])
+    user            User             @relation(onDelete: Cascade, fields: [userId], references: [id])
     clientCellphone ClientCellphone?
     clientAddress   ClientAddress?
     clientClinic    ClientClinic[]
@@ -84,7 +84,7 @@ model ClinicCellphone {
     ddd      String         @db.VarChar(2)
     number   String         @db.VarChar(10)
     type     CELLPHONE_TYPE
-    clinic   Clinic         @relation(fields: [clinicId], references: [id])
+    clinic   Clinic         @relation(onDelete: Cascade, fields: [clinicId], references: [id])
     clinicId String         @map("clinic_id")
 
     @@map("clinic_cellphone")
@@ -98,7 +98,7 @@ model ClinicAddress {
     neighboorhood String @db.VarChar(150)
     city          String @db.VarChar(150)
     state         STATE
-    clinic        Clinic @relation(fields: [clinicId], references: [id])
+    clinic        Clinic @relation(onDelete: Cascade, fields: [clinicId], references: [id])
     clinicId      String @map("clinic_id")
 
     @@map("clinic_address")
@@ -118,9 +118,9 @@ model Clinic {
 
 model StaffClinic {
     id       String   @id @default(cuid())
-    clinic   Clinic   @relation(fields: [clinicId], references: [id])
+    clinic   Clinic   @relation(onDelete: Cascade, fields: [clinicId], references: [id])
     clinicId String   @map("clinic_id")
-    staff    Staff    @relation(fields: [staffId], references: [id])
+    staff    Staff    @relation(onDelete: Cascade, fields: [staffId], references: [id])
     staffId  String   @map("staff_id")
     joinDate DateTime @map("join_date")
 
@@ -129,9 +129,9 @@ model StaffClinic {
 
 model ClientClinic {
     id       String   @id @default(cuid())
-    clinic   Clinic   @relation(fields: [clinicId], references: [id])
+    clinic   Clinic   @relation(onDelete: Cascade, fields: [clinicId], references: [id])
     clinicId String   @map("clinic_id")
-    client   Client   @relation(fields: [clientId], references: [id])
+    client   Client   @relation(onDelete: Cascade, fields: [clientId], references: [id])
     clientId String   @map("client_id")
     joinDate DateTime @map("join_date")
 
@@ -144,14 +144,14 @@ model Key {
     testTaken     Boolean        @map("test_taken")
     createdAt     DateTime       @default(now()) @map("created_at")
     expiresAt     DateTime       @map("expires_at")
-    client        Client         @relation(fields: [clientId], references: [id])
-    clinic        Clinic         @relation(fields: [clinicId], references: [id])
+    client        Client?        @relation(onDelete: Cascade, fields: [clientId], references: [id])
+    clinic        Clinic         @relation(onDelete: Cascade, fields: [clinicId], references: [id])
     clinicId      String         @map("clinic_id")
     fourElements  FourElements?
     circleOfLife  CircleOfLife?
     loveLanguage  LoveLanguage?
     selfKnowledge SelfKnowledge?
-    clientId      String
+    clientId      String?        @unique
 
     @@map("key")
 }
@@ -173,22 +173,22 @@ model FourElements {
     second      ELEMENTS
     third       ELEMENTS
     fourth      ELEMENTS
-    firstScore  Decimal  @map("first_score") @db.Decimal(5, 5)
-    secondScore Decimal  @map("second_score") @db.Decimal(5, 5)
-    thirdScore  Decimal  @map("third_score") @db.Decimal(5, 5)
-    fourthScore Decimal  @map("fourth_score") @db.Decimal(5, 5)
+    firstScore  Int      @map("first_score") @db.SmallInt
+    secondScore Int      @map("second_score") @db.SmallInt
+    thirdScore  Int      @map("third_score") @db.SmallInt
+    fourthScore Int      @map("fourth_score") @db.SmallInt
     keyId       String   @unique @map("key_id")
     resultId    String?  @unique @map("result_id")
-    key         Key      @relation(fields: [keyId], references: [id])
-    result      Result?  @relation(fields: [resultId], references: [id])
+    key         Key      @relation(onDelete: Cascade, fields: [keyId], references: [id])
+    result      Result?  @relation(onDelete: Cascade, fields: [resultId], references: [id])
 
     @@map("four_elements")
 }
 
 model CircleOfLife {
     id         String  @id @default(cuid())
-    average    Decimal @db.Decimal(5, 5)
-    total      Decimal @db.Decimal(5, 5)
+    average    Decimal
+    total      Decimal
     spiritual  Int     @db.SmallInt
     mind       Int     @db.SmallInt
     health     Int     @db.SmallInt
@@ -202,8 +202,8 @@ model CircleOfLife {
     purpose    Int     @db.SmallInt
     keyId      String  @unique @map("key_id")
     resultId   String? @unique @map("result_id")
-    key        Key     @relation(fields: [keyId], references: [id])
-    result     Result? @relation(fields: [resultId], references: [id])
+    key        Key     @relation(onDelete: Cascade, fields: [keyId], references: [id])
+    result     Result? @relation(onDelete: Cascade, fields: [resultId], references: [id])
 
     @@map("circle_of_life")
 }
@@ -214,14 +214,14 @@ model LoveLanguage {
     second      PREFERENCES
     third       PREFERENCES
     fourth      PREFERENCES
-    firstScore  Decimal     @map("first_score") @db.Decimal(5, 5)
-    secondScore Decimal     @map("second_score") @db.Decimal(5, 5)
-    thirdScore  Decimal     @map("third_score") @db.Decimal(5, 5)
-    fourthScore Decimal     @map("fourth_score") @db.Decimal(5, 5)
+    firstScore  Int         @map("first_score") @db.SmallInt
+    secondScore Int         @map("second_score") @db.SmallInt
+    thirdScore  Int         @map("third_score") @db.SmallInt
+    fourthScore Int         @map("fourth_score") @db.SmallInt
     keyId       String      @unique @map("key_id")
     resultId    String?     @unique @map("result_id")
-    key         Key         @relation(fields: [keyId], references: [id])
-    result      Result?     @relation(fields: [resultId], references: [id])
+    key         Key         @relation(onDelete: Cascade, fields: [keyId], references: [id])
+    result      Result?     @relation(onDelete: Cascade, fields: [resultId], references: [id])
 
     @@map("love_language")
 }
@@ -232,23 +232,23 @@ model SelfKnowledge {
     second      TRAITS
     third       TRAITS
     fourth      TRAITS
-    firstScore  Decimal @map("first_score") @db.Decimal(5, 5)
-    secondScore Decimal @map("second_score") @db.Decimal(5, 5)
-    thirdScore  Decimal @map("third_score") @db.Decimal(5, 5)
-    fourthScore Decimal @map("fourth_score") @db.Decimal(5, 5)
+    firstScore  Int     @map("first_score") @db.SmallInt
+    secondScore Int     @map("second_score") @db.SmallInt
+    thirdScore  Int     @map("third_score") @db.SmallInt
+    fourthScore Int     @map("fourth_score") @db.SmallInt
     keyId       String  @unique @map("key_id")
     resultId    String? @unique @map("result_id")
-    key         Key     @relation(fields: [keyId], references: [id])
-    result      Result? @relation(fields: [resultId], references: [id])
+    key         Key     @relation(onDelete: Cascade, fields: [keyId], references: [id])
+    result      Result? @relation(onDelete: Cascade, fields: [resultId], references: [id])
 
     @@map("self_knowledge")
 }
 
 enum ELEMENTS {
-    FOUR_ELEMENTS
-    SELF_KNOWLEDGE
-    LOVE_LANGUAGE
-    CIRCLE_OF_LIFE
+    AIR
+    WATER
+    FIRE
+    EARTH
 }
 
 enum TRAITS {

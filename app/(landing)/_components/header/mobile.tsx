@@ -38,17 +38,17 @@ export const HeaderMobile = ({ user }: HeaderMobileProps) => {
               <Link
                 onClick={() => setOpen(!open)}
                 href="/client"
-                className="px-auto py-2 border-b border-dashed hover:rounded-md hover:bg-[#816F86] hover:scale-110 focus:scale-110"
+                className="px-auto py-2 border-b hover:rounded-md hover:bg-[#816F86] hover:scale-110 focus:scale-110"
               >
                 Testes
               </Link>
-              <Link
+              {/* <Link
                 onClick={() => setOpen(!open)}
                 href="/clinics"
                 className="px-auto py-2 hover:rounded-md hover:bg-[#816F86] hover:scale-110 focus:scale-110"
               >
                 Clínicas
-              </Link>
+              </Link> */}
             </div>
             <div>
               {typeof user !== "string" && (

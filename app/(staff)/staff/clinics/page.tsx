@@ -19,7 +19,7 @@ export default async function Page() {
       </h1>
       <div className="grid grid-cols-4 gap-x-10 gap-y-5">
         {clinics.map((clinic) => (
-          <Link href={`/staff/clinics/${clinic.id}`}>
+          <Link href={`/staff/clinics/${clinic.id}/keys`}>
             <div className="w-[250px] h-[250px] flex flex-col items-center duration-500 justify-center hover:text-[#D9B895] hover:border-[#D9B895] p-6 text-[#534559] rounded-3xl border-4 border-[#534559] ">
               <FaClinicMedical size={175} />
               <h1 className="max-w-[230px] truncate font-bold text-3xl">

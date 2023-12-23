@@ -50,11 +50,12 @@ export const LoginForm = () => {
         <Button onClick={(e) => loginClient(e, registerData, setError, router)}>
           Entrar em sua conta
         </Button>
+
         <Link
           href="/login"
           className="relative h-min font-medium -top-4 text-[#414042]"
         >
-          Não tem uma conta? Faça seu cadastro!
+          Não tem uma conta? Faça login!
         </Link>
       </form>
     </div>

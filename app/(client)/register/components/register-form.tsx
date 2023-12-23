@@ -1,7 +1,7 @@
 "use client";
 
 import { RegisterData } from "../types/register-data";
-import { useState } from "react";
+import React, { useState } from "react";
 import { registerClient } from "../functions/register";
 import { Button } from "../../../shared/components/button";
 import Link from "next/link";
@@ -84,6 +84,7 @@ export const RegisterForm = () => {
         >
           Criar conta
         </Button>
+
         <Link
           href="/login"
           className="relative h-min font-medium -top-4 text-[#414042]"

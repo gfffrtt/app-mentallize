@@ -42,7 +42,7 @@ export const signInAdmin = async (
   if (user.type === "CLIENT") return NOT_AN_ADMIN;
   if (!compareSync(password, user.password)) return INCORRECT_PASSWORD;
   const session = await db.session.create({
-    data: { role: "CLIENT", user: { connect: { id: user.id } } },
+    data: { role: "STAFF", user: { connect: { id: user.id } } },
   });
   const token = signToken({ id: session.id, role: session.role });
   createCookie(token);

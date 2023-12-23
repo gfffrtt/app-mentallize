@@ -13,7 +13,7 @@ export const Phrase = () => {
       <div className="relative h-screen w-screen bg-gradient-to-t from-[#534559] to-black/20"></div>
       <div className="font-bold w-screen text-center inset-y-[20%] absolute">
         <div className="flex flex-col">
-          <p className="text-white relative mb-16 -top-3 font-bold text-[24px] px-5">
+          <p className="text-white relative mb-16 uppercase -top-3 font-bold text-[24px] px-5">
             <i>
               <strong>"</strong>
             </i>

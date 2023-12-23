@@ -7,6 +7,8 @@ services:
       POSTGRES_DB: app-mentallize
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
+    volumes:
+      - ./prisma/data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     networks:
@@ -17,7 +19,7 @@ services:
       context: .
       dockerfile: Development.Dockerfile
     ports:
-      - "3000:3000"
+      - "80:3000"
       - "5555:5555"
     volumes:
       - .:/app
