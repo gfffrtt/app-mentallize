@@ -10,6 +10,16 @@ export const registerClient = (
 ) => {
   e.preventDefault();
 
+  if (
+    !registerData.ddd ||
+    !registerData.email ||
+    !registerData.fullName ||
+    !registerData.number ||
+    !registerData.password
+  ) {
+    setError("Por favor preencha os dados que estão faltando");
+    return;
+  }
   api
     .post("/api/auth/register", registerData)
     .then((response) => {
@@ -33,6 +43,12 @@ export const loginClient = async (
   setError: React.Dispatch<React.SetStateAction<string>>
 ) => {
   e.preventDefault();
+
+  if (!loginData.email || !loginData.password) {
+    setError("Por favor preencha os dados que estão faltando");
+    return;
+  }
+
   api
     .post("/api/auth/login", loginData)
     .then((response) => {

@@ -1,26 +1,39 @@
 "use client";
 
-import { User, Key } from "@prisma/client";
-import { redirect, useRouter } from "next/navigation";
+import { Key } from "@prisma/client";
 import { TESTS_DICT } from "../../../shared/functions/rendering/enums";
 import Link from "next/link";
+import { IoWarningOutline } from "react-icons/io5";
 
 type KeysProps = {
   keys: Key[];
 };
 
 export const Keys = ({ keys }: KeysProps) => {
-  const router = useRouter();
   if (!keys.length) {
     return (
-      <div className="flex flex-col w-screen h-screen z-10">
-        Parece que você não tem nenhuma chave
+      <div className="flex flex-col w-full h-screen my-6 z-10 px-3">
+        <div>
+          <h1 className="text-[#D1AA80] text-3xl font-bold mb-5">
+            Suas chaves
+          </h1>
+          <div className="h-screen w-full flex flex-col text-center items-center justify-center">
+            <IoWarningOutline
+              size={100}
+              className="text-red-600 w-full text-center mb-8"
+            />
+            <h1 className="text-red-600 flex flex-col text-center w-[80%] font-extrabold rounded-md mb-4">
+              Parece que você não tem nenhuma chave, entre em contato para
+              conseguir chaves!
+            </h1>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col w-screen h-screen my-6 z-10 px-3">
+    <div className="flex flex-col w-full h-screen my-6 z-10 px-3">
       <div>
         <h1 className="text-[#D1AA80] text-3xl font-bold mb-5">Suas chaves</h1>
         <div className="grid grid-cols-2 gap-2 w-full">

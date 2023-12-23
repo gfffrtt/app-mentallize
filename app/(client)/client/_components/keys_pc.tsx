@@ -3,6 +3,7 @@
 import { Key } from "@prisma/client";
 import { TESTS_DICT } from "../../../shared/functions/rendering/enums";
 import Link from "next/link";
+import { IoWarningOutline } from "react-icons/io5";
 
 type KeysProps = {
   keys: Key[];
@@ -11,8 +12,20 @@ type KeysProps = {
 export const KeysPC = ({ keys }: KeysProps) => {
   if (!keys.length) {
     return (
-      <div className="flex flex-col w-full h-screen px-3">
-        Parece que você não tem nenhuma chave
+      <div className="mx-12 py-6 px-12 my-6 border rounded-md h-full">
+        <h1 className="text-[#D1AA80] text-6xl font-bold mb-12">
+          Minhas chaves
+        </h1>
+        <div className="h-screen w-w-full flex flex-col text-center px-6 items-center justify-center">
+          <IoWarningOutline
+            size={100}
+            className="text-red-600 w-full text-center mb-8"
+          />
+          <h1 className="text-red-600 flex flex-col text-center font-extrabold rounded-md mb-4 w-[400px]">
+            Parece que você não tem nenhuma chave, entre em contato para
+            conseguir chaves!
+          </h1>
+        </div>
       </div>
     );
   }

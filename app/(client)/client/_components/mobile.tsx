@@ -7,14 +7,14 @@ import { Keys } from "./keys";
 
 export const Mobile = async () => {
   const user = await getCurrentUserClient();
-  if (typeof user === "string") redirect("/");
+  if (typeof user === "string") redirect("/register");
   if (user.type === "STAFF") redirect("/staff/clinics");
   const keys = await db.key.findMany({
-    where: { client: { id: user.client.id } },
+    where: { client: { id: user.client.id }, NOT: [{ testTaken: true }] },
   });
 
   return (
-    <section>
+    <section className="min-h-screen">
       <Image
         src="/11.jpeg"
         alt="Jean Carlo Cardozo"

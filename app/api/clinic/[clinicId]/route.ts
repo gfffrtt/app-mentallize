@@ -26,6 +26,8 @@ export const POST = async (req: NextRequest) => {
       { error: "UNPROCESSABLE ENTITY" },
       { status: 422 }
     );
+  if (key.testTaken)
+    return NextResponse.json({ message: "Success" }, { status: 200 });
   switch (key.test as "MB" | "SK" | "LO" | "LI") {
     case "MB":
       await db.key.update({

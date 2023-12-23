@@ -17,7 +17,7 @@ export const AdminLoginForm = () => {
   return (
     <form className="flex flex-col justify-center items-center gap-y-[1.6rem] px-5 pb-7 rounded-md pt-16 border shadow-xl shadow-[#414042]/50">
       {error && (
-        <div className="text-red-600 ring-2 ring-offset-2 ring-red-600 rounded-md mb-4">
+        <div className="text-red-600 text-center ring-2 ring-offset-2 ring-red-600 rounded-md mb-4">
           {error}
         </div>
       )}

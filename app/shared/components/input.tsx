@@ -14,6 +14,7 @@ export const Input = ({
   className,
   placeholder,
   inputClassName,
+  required,
 }: InputProps) => {
   return (
     <div className={cn("text-[#414042] relative text-sm", className)}>
@@ -29,6 +30,7 @@ export const Input = ({
           "flex w-full items-center justify-center outline-none rounded-md text-lg font-medium ring-2 ring-[#534559] ring-offset-2",
           inputClassName
         )}
+        required
       />
     </div>
   );

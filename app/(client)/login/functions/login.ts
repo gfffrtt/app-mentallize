@@ -10,6 +10,12 @@ export const loginClient = async (
   router: AppRouterInstance
 ) => {
   e.preventDefault();
+
+  if (!loginData.email || !loginData.password) {
+    setError("Por favor preencha os dados que estão faltando");
+    return;
+  }
+
   api
     .post("/api/auth/login", loginData)
     .then((response) => {

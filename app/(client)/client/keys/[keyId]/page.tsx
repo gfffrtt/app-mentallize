@@ -30,14 +30,14 @@ export default async function Page({
           <div className="sm:hidden flex">
             <FourElementsMobile
               clientId={user.client.id}
-              clinicId={key.clientId}
+              clinicId={key.clinicId}
               keyId={key.id}
             />
           </div>
           <div className="sm:flex hidden justify-center items-center">
             <FourElementsDefault
               clientId={user.client.id}
-              clinicId={key.clientId}
+              clinicId={key.clinicId}
               keyId={key.id}
             />
           </div>

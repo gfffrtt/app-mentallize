@@ -22,13 +22,13 @@ export const RegisterForm = ({ setRegister }: Props) => {
   });
 
   return (
-    <div className="flex flex-col justify-center items-center w-screen h-screen z-10 px-3">
+    <div className="flex flex-col justify-center items-center w-full h-screen z-10 px-3">
       <h1 className="relative font-bold text-4xl bg-white top-5 px-2 text-[#D9B895]">
         Crie sua conta
       </h1>
       <form className="flex flex-col justify-center items-center gap-y-[1.6rem] px-5 rounded-md pt-12 border ">
         {error && (
-          <div className="text-red-600 ring-2 ring-offset-2 ring-red-600 rounded-md mb-4">
+          <div className="text-red-600 text-center ring-2 ring-offset-2 ring-red-600 rounded-md mb-4">
             {error}
           </div>
         )}
@@ -104,13 +104,13 @@ export const LoginForm = ({ setRegister }: Props) => {
   });
 
   return (
-    <div className="flex flex-col justify-center items-center w-screen h-screen z-10">
+    <div className="flex flex-col justify-center items-center w-full h-screen z-10">
       <h1 className="relative font-bold text-4xl bg-white top-5 px-2 text-[#D9B895]">
         Entrar na conta
       </h1>
       <form className="flex flex-col justify-center items-center gap-y-[1.6rem] px-5 rounded-md pt-16 border shadow-xl shadow-[#414042]/50">
         {error && (
-          <div className="text-red-600 ring-2 ring-offset-2 ring-red-600 rounded-md mb-4">
+          <div className="text-red-600 text-center ring-2 ring-offset-2 ring-red-600 rounded-md mb-4">
             {error}
           </div>
         )}

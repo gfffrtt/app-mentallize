@@ -3,15 +3,14 @@ import { db } from "../../../shared/database/connection";
 import { getCurrentUserClient } from "../../../shared/functions/authentication/session";
 import Image from "next/image";
 import { FaAngleDown } from "react-icons/fa";
-import { Keys } from "./keys";
 import { KeysPC } from "./keys_pc";
 
 export const Default = async () => {
   const user = await getCurrentUserClient();
-  if (typeof user === "string") redirect("/");
+  if (typeof user === "string") redirect("/register");
   if (user.type === "STAFF") redirect("/staff/clinics");
   const keys = await db.key.findMany({
-    where: { client: { id: user.client.id } },
+    where: { client: { id: user.client.id }, NOT: [{ testTaken: true }] },
   });
 
   return (

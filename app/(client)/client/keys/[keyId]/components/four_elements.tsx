@@ -272,7 +272,7 @@ export const FourElementsMobile = ({
       >
         Sair
       </Button>
-      <main className="h-screen w-screen bg-white flex flex-col justify-center items-center text-[#414042] font-bold">
+      <main className="min-h-screen h-full w-screen bg-white flex flex-col justify-center items-center text-[#414042] font-bold">
         {step === 0 && <Helper step={step} setStep={setStep} />}
         {step <= 24 && step > 0 && (
           <MbtiSections
@@ -318,7 +318,7 @@ function MbtiWords({
     water: string;
     earth: string;
     fire: string;
-  }>({ air: "0", water: "0", earth: "0", fire: "0" });
+  }>({ air: "0", water: "10", earth: "0", fire: "0" });
 
   const handleNext = () => {
     if (
@@ -509,7 +509,7 @@ function MbtiSections({
 
 const Helper = ({ step, setStep }: HelperProps) => {
   return (
-    <div className="mx-36 flex w-screen flex-col justify-center items-center gap-y-12 h-screen">
+    <div className="mx-36 flex w-screen flex-col justify-center items-center gap-y-12 min-h-screen h-full">
       <div className="flex flex-col items-center justify-center">
         <h1 className="mb-14 text-6xl text-[#bfa15e] text-center">
           COMO FUNCIONA

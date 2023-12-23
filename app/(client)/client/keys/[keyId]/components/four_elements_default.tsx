@@ -260,7 +260,7 @@ export const FourElementsDefault = ({
   const [step, setStep] = useState<number>(0);
 
   return (
-    <div className="h-screen">
+    <div className="min-h-screen h-full">
       <Button
         onClick={(e) => {
           e.preventDefault();
@@ -272,7 +272,7 @@ export const FourElementsDefault = ({
       >
         Sair
       </Button>
-      <main className="h-screen w-full bg-white flex flex-col justify-center items-center text-[#414042] font-bold">
+      <main className="min-h-screen h-full w-full bg-white flex flex-col justify-center items-center text-[#414042] font-bold">
         {step === 0 && <Helper step={step} setStep={setStep} />}
         {step <= 24 && step > 0 && (
           <MbtiSections
@@ -318,7 +318,7 @@ function MbtiWords({
     water: string;
     earth: string;
     fire: string;
-  }>({ air: "0", water: "10", earth: "0", fire: "0" });
+  }>({ air: "0", water: "0", earth: "0", fire: "0" });
 
   const handleNext = () => {
     if (
@@ -341,7 +341,7 @@ function MbtiWords({
   };
 
   return (
-    <main className="h-screen pt-12 w-full mx-auto">
+    <main className="min-h-screen h-full pt-12 w-full mx-auto">
       <div className="w-full grid grid-cols-2 gap-x-24 gap-y-16">
         <div
           className={
@@ -509,7 +509,7 @@ function MbtiSections({
 
 const Helper = ({ step, setStep }: HelperProps) => {
   return (
-    <div className="relative -top-[10%] mx-36 h-screen w-[70%] flex flex-col justify-center items-center gap-y-12">
+    <div className="relative -top-[10%] mx-36 min-h-screen h-full w-[70%] flex flex-col justify-center items-center gap-y-12">
       <div className="flex flex-col items-center justify-center">
         <h1 className="mb-14 text-6xl text-[#bfa15e]">COMO FUNCIONA</h1>
         <p className="font-semibold text-lg">
