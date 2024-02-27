@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "../../../shared/database/connection";
 import { $Enums } from "@prisma/client";
+import { TEST_DICT } from "../../../shared/types/test_dict";
 
 export const GET = async (
   req: NextRequest,
@@ -10,13 +11,6 @@ export const GET = async (
     where: { id: clinicId },
   });
   return NextResponse.json(clinic);
-};
-
-export const TEST_DICT = {
-  AR: $Enums.ELEMENTS.AIR,
-  WA: $Enums.ELEMENTS.WATER,
-  FI: $Enums.ELEMENTS.FIRE,
-  EA: $Enums.ELEMENTS.EARTH,
 };
 
 export const POST = async (req: NextRequest) => {
